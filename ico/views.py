@@ -18,4 +18,13 @@ class BidWindowsView(FormView, ListView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
-    
+
+
+class BidWindowView(LoginRequiredMixin, FormView, DetailView):
+    model = BidWindow
+    form_class = BidForm
+    success_url = '/bid_windows/'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)

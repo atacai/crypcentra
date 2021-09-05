@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Bid{% endblock title %}
+
+{% block content %}
+    {{ block.super }}
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-6 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h5>{{ object.name }}</h5>
+                            {% render_field form.user value=request.user.id %}
+                            {% render_field form.bid_window value=object.id %}
+                        </div>
+                        <div class="card-subtitle"><small>Total token: {{ object.total_tokens }}</small></div>
+                        <div class="card-text mt-3">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        {% if form.is_bound and form.number_of_tokens.errors %}
+                                            {{ form.number_of_tokens.label_tag }}
+                                            {% render_field form.number_of_tokens class="form-control is-invalid" %}
+                                            {% for error in form.number_of_tokens.errors %}
+                                                <div class="invalid-feedback">{{ error }}</div>
+                                            {% endfor %}
+                                        {% else %}
+                                            {{ form.number_of_tokens.label_tag }}
+                                            {% render_field form.number_of_tokens class="form-control" %}
+                                            {% if form.number_of_tokens.help_text %}
+                                                <small class="form-text text-muted">{{ form.number_of_tokens.help_text }}</small>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        {% if form.is_bound and form.bidding_price.errors %}
+                                            {{ form.bidding_price.label_tag }}
+                                            {% render_field form.bidding_price class="form-control is-invalid" %}
+                                            {% for error in form.bidding_price.errors %}
+                                                <div class="invalid-feedback">{{ error }}</div>
+                                            {% endfor %}
+                                        {% else %}
+                                            {{ form.bidding_price.label_tag }}
+                                            {% render_field form.bidding_price class="form-control" %}
+                                            {% if form.bidding_price.help_text %}
+                                                <small class="form-text text-muted">{{ form.bidding_price.help_text }}</small>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-success">Bid</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock content %}
