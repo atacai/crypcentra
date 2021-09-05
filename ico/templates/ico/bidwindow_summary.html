@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Bid{% endblock title %}
+
+{% block content %}
+    {{ block.super }}
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-6 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h5>{{ object.name }}</h5>
+                        </div>
+                        <div class="card-subtitle"><small>Total token: {{ object.total_tokens }}</small></div>
+                        <div class="card-text mt-3">
+                            <div class="row">
+                                <div class="col-6">Start time: {{ object.start_time|date:'D, j M Y H:i' }}</div>
+                                <div class="col-6">End time: {{ object.end_time|date:'D, j M Y H:i' }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 mr-auto">Total bids: {{ object.window_bids.count }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="table-responsive">
+                                        {% if object.is_auctioned %}
+                                            <h5 class="mt-5">Success Bid</h5>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>User</th>
+                                                        <th>Bid Token</th>
+                                                        <th>Bid Price</th>
+                                                        <th>Date/Time</th>
+                                                        <th>Success Token</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                        {% for bid in success_bids %}
+                                                            <tr>
+                                                                <td>{{ bid.user.username }}</td>
+                                                                <td>{{ bid.number_of_tokens }}</td>
+                                                                <td>{{ bid.bidding_price }}</td>
+                                                                <td>{{ bid.timestamp|date:'D, j M Y H:i' }}</td>
+                                                                <td>{{ bid.success_tokens }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                </tbody>
+                                            </table>
+                                            <h5 class="mt-5">Fail Bid</h5>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>User</th>
+                                                        <th>Bid Token</th>
+                                                        <th>Bid Price</th>
+                                                        <th>Date/Time</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                        {% for bid in fail_bids %}
+                                                            <tr>
+                                                                <td>{{ bid.user.username }}</td>
+                                                                <td>{{ bid.number_of_tokens }}</td>
+                                                                <td>{{ bid.bidding_price }}</td>
+                                                                <td>{{ bid.timestamp|date:'D, j M Y H:i' }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        {% else %}
+                                            <table class="table mt-5">
+                                                <thead>
+                                                    <tr>
+                                                        <th>User</th>
+                                                        <th>Bid Token</th>
+                                                        <th>Bid Price</th>
+                                                        <th>Date/Time</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                        {% for bid in all_bids %}
+                                                            <tr>
+                                                                <td>{{ bid.user.username }}</td>
+                                                                <td>{{ bid.number_of_tokens }}</td>
+                                                                <td>{{ bid.bidding_price }}</td>
+                                                                <td>{{ bid.timestamp|date:'D, j M Y H:i' }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'ico:bid_windows' %}" class="btn btn-secondary">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock content %}

@@ -28,3 +28,16 @@ class BidWindowView(LoginRequiredMixin, FormView, DetailView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+
+
+class BidSummaryView(LoginRequiredMixin, DetailView):
+    model = BidWindow
+    template_name = 'ico/bidwindow_summary.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['all_bids'] = self.object.window_bids.all()
+        context['success_bids'] = self.object.window_bids.filter(success_tokens__isnull=False, success_tokens__gt=0)
+        context['fail_bids'] = self.object.window_bids.filter(success_tokens__isnull=True, success_tokens=0)
+        return context
+    
