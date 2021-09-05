@@ -1,0 +1,15 @@
+nav.menu {
+    background-color: #212529;
+}
+
+nav.menu ul {
+    padding: 10px 20px;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav.menu ul li {
+    padding: 5px;
+}

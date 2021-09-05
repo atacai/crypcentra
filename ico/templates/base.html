@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- global css -->
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" />
+    <!-- css based on page -->
+    {% block static_css %}{% endblock static_css %}
+    <title>{% block title %}{% endblock title %}</title>
+  </head>
+
+  <body>
+    {% block body %}
+    <div class="wrapper">
+      {% block wrapper %}
+        <header>
+          {% block header %}
+            <div class="container-fluid p-0">
+                <nav class="menu">
+                    <ul class="list-unstyled">
+                        {% if not request.user.is_authenticated %}
+                            <li><a href="{% url 'login' %}" class="btn btn-light">Login</a></li>
+                        {% else %}
+                            <li>Welcome, {{ request.user.username }}</li>
+                            <li><a href="{% url 'logout' %}" class="btn btn-light">Logout</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+          {% endblock header %}
+        </header>
+        <!-- Content -->
+        <main>
+            <div class="container">{% block content %}{% endblock content %}</div>
+        </main>
+        <!-- Footer -->
+        <footer>{% block footer %} {% endblock footer %}</footer>
+      {% endblock wrapper %}
+    </div>
+    <!-- Bootstrap core JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- global js -->
+    <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+    <!-- js based on page -->
+    {% block static_js %}{% endblock static_js %}
+    <!-- CSRF Token -->
+    {% csrf_token %}
+    <script type="text/javascript">
+      var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+    </script>
+    {% endblock body %}
+  </body>
+</html>
