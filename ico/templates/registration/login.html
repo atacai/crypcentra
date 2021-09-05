@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock title %}
+
+{% block header %}{% endblock header %}
+
+{% block content %}
+    {{ block.super }}
+    <form method="post">
+        {% csrf_token %}
+        <div class="row mt-5">
+            <div class="col-8 mx-auto">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h5>Login</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" id="id_username" name="username" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" id="id_password" name="password" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center mt-3">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock content %}
