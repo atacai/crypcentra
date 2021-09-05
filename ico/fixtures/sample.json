@@ -1,0 +1,121 @@
+[
+    {
+        "model": "ico.bidwindow",
+        "pk": 1,
+        "fields": {
+            "name": "ICO-1",
+            "total_tokens": 25,
+            "start_time": "2021-09-01T07:00:00Z",
+            "end_time": "2021-09-02T07:00:00Z",
+            "is_auctioned": true
+        }
+    },
+    {
+        "model": "ico.bid",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "number_of_tokens": 10,
+            "bidding_price": "1.00",
+            "timestamp": "2021-09-01T10:14:11.357Z",
+            "success_tokens": 10,
+            "bid_window": 1
+        }
+    },
+    {
+        "model": "ico.bid",
+        "pk": 2,
+        "fields": {
+            "user": 1,
+            "number_of_tokens": 10,
+            "bidding_price": "2.00",
+            "timestamp": "2021-09-01T10:15:07.835Z",
+            "success_tokens": 10,
+            "bid_window": 1
+        }
+    },
+    {
+        "model": "ico.bid",
+        "pk": 3,
+        "fields": {
+            "user": 1,
+            "number_of_tokens": 10,
+            "bidding_price": "1.00",
+            "timestamp": "2021-09-01T10:51:33.018Z",
+            "success_tokens": 5,
+            "bid_window": 1
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$lI0x5qtjurARA8s98jDD4M$OSrktE26qYT575qwMbbmc0XAkdbfsM1DIsYjhXYt6Hg=",
+            "last_login": "2021-09-05T14:38:02.305Z",
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2021-09-01T03:17:16.786Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$PT73Gujopef3QWZ98ft054$dAjaAbbZ/bJrzo9Cxvr5BqkUnAWEfCAIzceGTOg75tg=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "test1",
+            "first_name": "Test1",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2021-09-04T16:40:13.748Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$PT73Gujopef3QWZ98ft054$dAjaAbbZ/bJrzo9Cxvr5BqkUnAWEfCAIzceGTOg75tg=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "test2",
+            "first_name": "Test2",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2021-09-04T16:40:13.748Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 4,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$PT73Gujopef3QWZ98ft054$dAjaAbbZ/bJrzo9Cxvr5BqkUnAWEfCAIzceGTOg75tg=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "test3",
+            "first_name": "Test3",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2021-09-04T16:40:13.748Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]
