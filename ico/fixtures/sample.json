@@ -14,7 +14,7 @@
         "model": "ico.bid",
         "pk": 1,
         "fields": {
-            "user": 1,
+            "user": 2,
             "number_of_tokens": 10,
             "bidding_price": "1.00",
             "timestamp": "2021-09-01T10:14:11.357Z",
@@ -26,7 +26,7 @@
         "model": "ico.bid",
         "pk": 2,
         "fields": {
-            "user": 1,
+            "user": 3,
             "number_of_tokens": 10,
             "bidding_price": "2.00",
             "timestamp": "2021-09-01T10:15:07.835Z",
@@ -38,7 +38,7 @@
         "model": "ico.bid",
         "pk": 3,
         "fields": {
-            "user": 1,
+            "user": 4,
             "number_of_tokens": 10,
             "bidding_price": "1.00",
             "timestamp": "2021-09-01T10:51:33.018Z",
